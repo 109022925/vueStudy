@@ -6,5 +6,52 @@
 </head>
 <body>
 
+<div id="app">
+  <cpn>
+    <button>button</button>
+  </cpn>
+</div>
+
+<template>
+  <div>
+    <h2>我是组件</h2>
+    <slot></slot>
+  </div>
+</template>
+
+
+<script src="js/vue.js"></script>
+<script>
+  const cpn= {
+    template: "#cpn",
+    props: {
+
+    },
+    data() {
+      return {
+
+      }
+    },
+    methods: {
+
+    },
+  }
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      content: "hello, world!"
+    },
+    methods: {
+
+    },
+    computed: {
+      cpn
+    },
+    components: {
+
+    }
+  })
+</script>
 </body>
 </html>
