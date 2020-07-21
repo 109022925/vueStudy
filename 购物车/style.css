@@ -1,0 +1,20 @@
+table
+{
+  border: bisque 1px solid;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+th, td
+{
+  padding: 8px 16px;
+  border: 1px solid cadetblue;
+  text-align: left;
+}
+
+th
+{
+  background-color: #f7f7f7;
+  color: cadetblue;
+  font-weight: 600;
+}

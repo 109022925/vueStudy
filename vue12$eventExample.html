@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+  <cpn :number1="num1" :number2="num2" @dnumber1change="num1change" @dnumber2change="num2change"/>
+</div>
+
+<template id="cpn">
+  <div>
+    <p>props:{{number1}}</p>
+    <p>data:{{dnumber1}}</p>
+    <input type="text" :value="dnumber1" @input="itemchange1">
+    <p>props:{{number2}}</p>
+    <p>data:{{dnumber2}}</p>
+    <input type="text" :value="dnumber2" @input="itemchange2">
+  </div>
+</template>
+
+<script src="js/vue.js"></script>
+<script>
+
+  // noinspection JSAnnotator
+  const cpn = {
+    template: "#cpn",
+    props: {
+      number1: Number,
+      number2: Number,
+    },
+    data() {
+      return {
+        dnumber1: this.number1,
+        dnumber2: this.number2,
+      }
+    },
+    methods: {
+      itemchange1(event) {
+        this.dnumber1 = event.target.value
+        this.$emit("dnumber1change", this.dnumber1)
+      },
+      itemchange2(event) {
+        this.dnumber2 = event.target.value
+        this.$emit("dnumber2change", this.dnumber2)
+      },
+    }
+  }
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      num1: 1,
+      num2: 0,
+    },
+    components: {
+      cpn
+    },
+    methods: {
+      num1change(value) {
+        this.num1 = value
+      },
+      num2change(value) {
+        this.num2 = value
+      }
+    }
+  })
+</script>
+
+</body>
+</html>

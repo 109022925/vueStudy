@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .active
+    {
+      color: brown;
+    }
+  </style>
+</head>
+
+<body>
+<div id="app">
+  <ul>
+    <li
+      v-for="(i, index) in movies"
+      :key="index"
+      v-on:click="btnclick(index)"
+      :class="{active:select==index}"
+    >{{i}}</li>
+  </ul>
+</div>
+
+
+
+
+<script src="js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      movies: ["哈利波特", "指环王", "暮光之城", "权力的游戏"],
+      select: 0,
+    },
+    methods: {
+      btnclick: function (index) {
+        this.select = index
+      }
+    }
+  })
+</script>
+</body>
+</html>

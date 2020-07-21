@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+  <cpn :cmovies="movies" :cmessage="content" >{{cmovies}}</cpn>
+</div>
+
+<template id="symbol">
+  <div>
+    <h2>{{cmovies}} {{cmessage}}</h2>
+  </div>
+</template>
+
+<script src="js/vue.js"></script>
+<script>
+
+  // noinspection JSAnnotator
+  const cpn = {
+    template: '#symbol',
+    //props: ["cmovies", "cmessage"],
+    props: {
+      cmovies: {
+        type: Array,
+        default: ["1", "2"]
+      },
+      cmessage: String,
+    },
+    data() {
+      return {}
+    }
+  }
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      content: "hello, world!",
+      movies: ["1", "2", "3"]
+    },
+    components: {
+      cpn,
+    }
+  })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+  <span v-if="select">
+    <label>用户邮箱：</label>
+    <input type="text" placeholder="请输入邮箱" key="aaa">
+  </span>
+  <span v-else>
+    <label>用户电话：</label>
+    <input type="text" placeholder="请输入电话" key="bbb">
+  </span>
+  <button @click="btnclick">切换类型</button>
+</div>
+<!-- key是标识  !-->
+
+<script src="js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      select: true,
+    },
+    methods: {
+      btnclick() {
+        this.select = !this.select
+      }
+    }
+  })
+</script>
+</body>
+</html>
