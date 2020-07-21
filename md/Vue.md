@@ -12,7 +12,7 @@ var app = new Vue({
 
 
 
-## vue属性：
+## <font color="#9AABC1">vue属性：</font>
 
 **el:** 挂载html元素
 
@@ -48,11 +48,23 @@ components: {
 
 **watch:** 监听
 
+**template:** 把模板抽离出来
+
+> vue文件格式
+>
+> **template:** 存放模板
+>
+> **script:** 存放js
+>
+> **style:** 存放css
 
 
 
+---
 
-## vue指令：
+
+
+## <font color="#9AABC1">vue指令：</font>
 
 **v-for:** 循环
 
@@ -156,9 +168,13 @@ components: {
 
 
 
-## vue组件：
+---
 
-### 构造组件
+
+
+## <font color="#9AABC1">vue组件：</font>
+
+### <font color="#9AABC1">构造组件</font>
 
 - 调用 Vue.extend() 方法创建组件构造器
 
@@ -188,7 +204,7 @@ Vue.component('mycpn', cpnConstructor)		//前一个参数是标签名， 后一�
 
 
 
-### 父子组件
+### <font color="#9AABC1">父子组件</font>
 
 - 在一个组件里面注册另外一个组件，这样就是父子组件
 
@@ -215,7 +231,7 @@ const cpnConstructor2 = Vue.extend({
 
 
 
-### 组件data
+### <font color="#9AABC1">组件data</font>
 
 > 组件不能访问 vue 实例中的数据，所以组件必须拥有自己的data
 >
@@ -225,7 +241,11 @@ const cpnConstructor2 = Vue.extend({
 
 
 
-### 父子组件通信
+---
+
+
+
+### <font color="#9AABC1">父子组件通信</font>
 
 1. 通过props向子组件传递数据
 2. 通过事件向父组件发送信息
@@ -341,6 +361,8 @@ const cpnConstructor2 = Vue.extend({
 
 **属性：** 
 
+**<!--------渲染后才可以获得父子组件的数据！！！-------->**
+
 #### $children 和 $refs
 
 > 通过$children可以获得子组件
@@ -378,32 +400,89 @@ const cpnConstructor2 = Vue.extend({
 
 
 
-### 组件高级
-
-**slot:** 预留空间
-
-```html
-<div id="app">
-  <cpn>
-    <h2>替换元素</h2>		//替换元素，会替换掉插槽中的默认元素
-  </cpn>
-</div>
-
-<template>
-  <div>
-    <h2>我是组件</h2>
-    <slot>
-        <button>button</button>
-    </slot>
-  </div>
-</template>
-```
+---
 
 
 
+### <font color="#9AABC1">组件高级</font>
+
+**slot:** 插槽，预留空间
+
+> 默认替换
+>
+> ```js
+> <div id="app">
+>   <cpn>
+>     <h2>替换元素</h2>		//替换元素，会替换掉插槽中的默认元素
+>   </cpn>
+> </div>
+> 
+> <template>
+>   <div>
+>     <h2>我是组件</h2>
+>     <slot>
+>         <button>button</button>
+>     </slot>
+>   </div>
+> </template>
+> ```
+
+> 具名替换
+>
+> 当一个插槽有名字时，替换它必须加上名字；默认替换将会替换所有没有名字的插槽
+>
+> ```js
+> <div id="app">
+>   <cpn>
+>     <span slot="center">标题</span>
+>   </cpn>
+>   <cpn>
+>     <span slot="right">你好</span>
+>   </cpn>
+> </div>
+> 
+> <template>
+>   <div>
+>     <slot name="left"><span>左边</span></slot>
+>     <slot name="center"><span>中间</span></slot>
+>     <slot name="right"><span>右边</span></slot>
+>   </div>
+> </template>
+> ```
+>
+> 
+
+> 作用域插槽 slot-scope
+>
+> > 目的：子组件获取父组件的数据
+>
+> ```html
+> <div id="app">
+>   <cpn>
+>     <template slot-scope="slot">		<!--这里必须使用template标签, 获取插槽变量slot-->
+>       <span v-for="item in slot.data">{{item}}--</span>
+>     </template>
+>   </cpn>
+> </div>
+> 
+> <template id="cpn">
+>   <div>
+>     <slot :data="pLanguages">	<!--data和pLanguages绑定-->
+>       <ul>
+>         <li v-for="item in pLanguages">{{item}}</li>
+>       </ul>
+>     </slot>
+>   </div>
+> </template>
+> ```
+>
+> 
+
+---
 
 
-## 数组方法：
+
+## <font color="#9AABC1">数组方法：</font>
 
 **push:** 进栈，响应式
 
@@ -425,7 +504,11 @@ const cpnConstructor2 = Vue.extend({
 
 
 
-## JS高阶函数：
+---
+
+
+
+## <font color="#9AABC1">JS高阶函数：</font>
 
 ```js
 for (let item of list)
@@ -469,6 +552,28 @@ let newnums = nums.reduce(function(prevalue, n) {
 
 
 
-## 其他：
+---
+
+---
+
+
+
+## <font color="#9AABC1">其他：</font>
 
 > 在 ES6 中，常量所指向的对象不可修改，但是对象的属性可以进行修改---除非对象需要更改，否则一般定义对象都用 const
+>
+> ES6模块的导入和导出用	import export
+>
+> > 如果导出的时候不命名，可以用 export default item
+> >
+> > 导入的时候就可以自己命名 import myitem from "dir"
+> >
+> > 一个模块导出有且仅有一个 export default
+>
+> 引入模块 js文件时需要规定类型为module
+>
+> ```html
+> <script src="myjs.js" type="module"></script>
+> ```
+>
+> 
