@@ -576,4 +576,9 @@ let newnums = nums.reduce(function(prevalue, n) {
 > <script src="myjs.js" type="module"></script>
 > ```
 >
-> 
+
+> 箭头函数中的 **this** 
+>
+> > 匿名函数没有作用域
+> >
+> > 向外层作用域中一层层查找，直到有 this 的作用域
