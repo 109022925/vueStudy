@@ -71,7 +71,7 @@ Vue程序运行过程
 >
 > render	渲染
 
-![Vue程序运行过程](D:\WebStorm程序\vueStudy\Vue程序运行过程.png)
+![Vue程序运行过程](..\jpg\Vue程序运行过程.png)
 
 
 

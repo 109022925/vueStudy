@@ -1,7 +1,5 @@
 # <font color="#BF473E">Vue-Router</font> 
 
-<#CCA6A3>
-
 
 
 <font color="#BF473E">routing</font> 
@@ -30,7 +28,7 @@
 >
 > > 浏览器中显示的网页中的大部分内容，都是由前端写的 js 代码在浏览器中执行，最终渲染出来的网页
 > >
-> > ![前端渲染](D:\WebStorm程序\vueStudy\前端渲染.png)
+> > ![前端渲染](..\jpg\前端渲染.png)
 > >
 > > 1. 浏览器得到URL向静态服务器请求，得到HTML+CSS+JS
 > > 2. 浏览器执行JS代码，JS代码中包含ajax，ajax向后端接口发起请求
