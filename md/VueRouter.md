@@ -193,3 +193,173 @@ homeClick() {
 }
 ```
 
+
+
+## <font color="#BF473E">动态路由</font>  
+
+```html
+<router-link :to="'/user' + userId"></router-link>
+```
+
+
+
+$route
+
+> 拿到当前活跃路由
+>
+> 获取路由中的参数
+
+```js
+this.$route.params.userId
+```
+
+
+
+## <font color="#BF473E">路由懒加载</font> 
+
+>  当打包构建应用时，JS包会变得非常大，影响页面加载
+>
+> 把不同路由对应的组件分割成不同的代码块，然后当路由被访问的时候才加载对应组件
+
+
+
+  **<font color="#CCA6A3"> 懒加载的方式</font>** 
+
+```js
+const Home = () => import('../components/Home')
+
+{
+    path: '/home',
+    component: Home
+}
+```
+
+
+
+## <font color="#BF473E">嵌套路由</font> 
+
+> 在路由映射中配置对应的子组件
+
+```js
+const Home = () => import('../components/Home')
+const HomeNews = () => import('../components/HomeNews')
+
+{
+    path: '/home',
+    component: Home,
+    children: [
+        {
+            path: 'news',
+            component: news
+        },
+        {
+            
+        }
+    ]
+}
+```
+
+
+
+## <font color="#BF473E">参数传递</font>  
+
+  **<font color="#CCA6A3"> URL: scheme://host/path?query#fragment</font>** 
+
+> 第一种方法：通过配置动态路由传递参数
+>
+> > params
+> >
+> > /router/123
+>
+> 第二种方法：通过query中的key作为传递方式
+>
+> > query
+> >
+> > /router?id=123
+>
+> ```html
+> <router-link :to="{path: '/profile' query: {id: '123'}}"></router-link>
+> ```
+
+
+
+## <font color="#BF473E">全局导航守卫</font>  
+
+> 监听全局页面跳转
+>
+> ```js
+> // 前置钩子	执行前回调
+> router.beforeEach((to, next, from) => {
+>     // to和next都是route类型，从from跳转至to
+>     document.title = to.matched[0].meta.title
+>     next()		// 必须要主动调用next函数
+> })
+> ```
+>
+> ```js
+> // 后置钩子	执行后回调
+> // 不需要主动调用next函数
+> route.afterEach((to, from) => {
+>     
+> })
+> ```
+
+ **<font color="#CCA6A3"> 路由独享守卫</font>** 
+
+```js
+const router = new VueRouter({
+  routes: [
+    {
+      path: '/foo',
+      component: Foo,
+      beforeEnter: (to, from, next) => {
+        // ...
+      }
+    }
+  ]
+})
+```
+
+ **<font color="#CCA6A3"> 组件内的守卫</font>** 
+
+```js
+const Foo = {
+  template: `...`,
+  beforeRouteEnter (to, from, next) {
+    // 在渲染该组件的对应路由被 confirm 前调用
+    // 不！能！获取组件实例 `this`
+    // 因为当守卫执行前，组件实例还没被创建
+  },
+  beforeRouteUpdate (to, from, next) {
+    // 在当前路由改变，但是该组件被复用时调用
+    // 举例来说，对于一个带有动态参数的路径 /foo/:id，在 /foo/1 和 /foo/2 之间跳转的时候，
+    // 由于会渲染同样的 Foo 组件，因此组件实例会被复用。而这个钩子就会在这个情况下被调用。
+    // 可以访问组件实例 `this`
+  },
+  beforeRouteLeave (to, from, next) {
+    // 导航离开该组件的对应路由时调用
+    // 可以访问组件实例 `this`
+  }
+}
+```
+
+
+
+---
+
+---
+
+---
+
+
+
+# <font color="#BF473E">Keep-alive</font> 
+
+> keep-live 是Vue 内置的一个组件，可以使被包含的组件保留状态，或避免重新渲染
+>
+> router-view 也是一个组件，如果直接被包在keep-alive 里面，所有路径匹配到的视图组件都会被缓存
+
+
+
+
+

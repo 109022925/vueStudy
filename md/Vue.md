@@ -172,9 +172,33 @@ components: {
 
 
 
-## <font color="#9AABC1">vue组件：</font>
+## <font color="#9AABC1">声明周期函数：</font> 
 
-### <font color="#9AABC1">构造组件</font>
+![Vue声明周期](..\jpg\Vue声明周期.png)
+
+```js
+created() {
+    // 创建组件回调
+}
+
+mounted() {
+    // template挂载到dom上回调
+}
+
+updated() {
+    // 界面刷新回调
+}
+```
+
+
+
+---
+
+
+
+## <font color="#9AABC1">vue组件：</font> 
+
+### <font color="#9AABC1">构造组件</font> 
 
 - 调用 Vue.extend() 方法创建组件构造器
 

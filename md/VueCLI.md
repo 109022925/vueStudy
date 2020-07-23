@@ -78,7 +78,7 @@ Vue程序运行过程
 ```js
 new Vue({
     render: h => h(App),
-}).$mount('#app')		//$mount执行挂载任务
+}).$mount('#app')		//$mount执行挂载任务，名字可以任意取，这是挂载在vdom上的，名字只是用于区分
 ```
 
 
